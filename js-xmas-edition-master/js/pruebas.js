@@ -13,3 +13,25 @@
 // }
 
 // probarValidarNombre();
+
+
+
+
+function probarValidarProvincia() {
+    console.assert(
+        validarProvincia("algun valor no introducido") ===
+        'La provincia seleccionada no es perteneciente a ningún valor',
+        "La prueba de validar provincia no validó la función validar provincia"
+    )
+}
+
+function probarValidarRegalo() {
+    console.assert(
+        validarRegalo(" aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres aca hay 22 caracteres") ===
+        "Este campo debe tener menos de 250 caracteres", "La prueba de validarRegalo, no validó que haya menos de 250 caracteres"
+    )
+    console.assert(
+        validarRegalo("" === "Este campo debe tener al menos 1 caracter",
+            "La prueba de validarRegalo no probó que existan mas de 0 caracteres")
+    )
+}
