@@ -21,7 +21,31 @@ function probarValidarProvincia() {
     console.assert(
         validarProvincia("algun valor no introducido") ===
         'La provincia seleccionada no es perteneciente a ningún valor',
-        "La prueba de validar provincia no validó la función validar provincia"
+        "La prueba de validarProvincia no validó la función validarProvincia"
+    )
+    console.assert(
+        validarProvincia("Bs. As.") === ""
+        || validarProvincia("Chaco") === ""
+        || validarProvincia("Chubut") === ""
+        || validarProvincia("Corrientes") === ""
+        || validarProvincia("Entre Rios") === ""
+        || validarProvincia("Formosa") === ""
+        || validarProvincia("Jujuy") === ""
+        || validarProvincia("La Pampa") === ""
+        || validarProvincia("La Rioja") === ""
+        || validarProvincia("Mendoza") === ""
+        || validarProvincia("Misiones") === ""
+        || validarProvincia("Neuquen") === ""
+        || validarProvincia("Rio Negro") === ""
+        || validarProvincia("Salta") === ""
+        || validarProvincia("San Juan") === ""
+        || validarProvincia("San Luis") === ""
+        || validarProvincia("Santa Cruz") === ""
+        || validarProvincia("Santa Fe") === ""
+        || validarProvincia("Sgo. del Ester") === ""
+        || validarProvincia("Tierra del Fuego") === ""
+        || validarProvincia("Tucuman") === "",
+        "validarProvincia no está tomando los valores de las provincias"
     )
 }
 
@@ -31,7 +55,11 @@ function probarValidarRegalo() {
         "Este campo debe tener menos de 250 caracteres", "La prueba de validarRegalo, no validó que haya menos de 250 caracteres"
     )
     console.assert(
-        validarRegalo("" === "Este campo debe tener al menos 1 caracter",
+        validarRegalo("") == "Este campo debe tener al menos 1 caracter",
             "La prueba de validarRegalo no probó que existan mas de 0 caracteres")
-    )
+    
 }
+
+
+probarValidarProvincia()
+probarValidarRegalo()
