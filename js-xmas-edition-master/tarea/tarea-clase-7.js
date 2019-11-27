@@ -20,3 +20,34 @@ function validarRegalo(regalo) {
     }
     return ""
 }
+
+
+function validarProvincia(provincia) {
+
+    if (provincia === "Bs. As."
+        || (provincia) === "Chaco"
+        || (provincia) === "Chubut"
+        || (provincia) === "Corrientes"
+        || (provincia) === "Entre Rios"
+        || (provincia) === "Formosa"
+        || (provincia) === "Jujuy"
+        || (provincia) === "La Pampa"
+        || (provincia) === "La Rioja"
+        || (provincia) === "Mendoza"
+        || (provincia) === "Misiones"
+        || (provincia) === "Neuquen"
+        || (provincia) === "Rio Negro"
+        || (provincia) === "Salta"
+        || (provincia) === "San Juan"
+        || (provincia) === "San Luis"
+        || (provincia) === "Santa Cruz"
+        || provincia === "Santa Fe"
+        || provincia === "Sgo. del Ester"
+        || (provincia) === "Tierra del Fuego"
+        || (provincia) === "Tucuman"
+    ) {
+        return ""
+    } else {
+        return 'La provincia seleccionada no es perteneciente a ningún valor'
+    }
+}
