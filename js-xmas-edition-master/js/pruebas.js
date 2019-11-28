@@ -55,9 +55,18 @@ function probarValidarRegalo() {
         "Este campo debe tener menos de 250 caracteres", "La prueba de validarRegalo, no validó que haya menos de 250 caracteres"
     )
     console.assert(
-        validarRegalo("") == "Este campo debe tener al menos 1 caracter",
-            "La prueba de validarRegalo no probó que existan mas de 0 caracteres")
-    
+        validarRegalo("") == "Este campo debe tener al menos 2 caracteres",
+        "La prueba de validarRegalo no probó que existan mas de 0 caracteres")
+
+    console.assert(
+        validarRegalo("i") == "Este campo debe contener al menos más de 2 caracteres",
+        "La prueba de validarRegalo no probó que se hayan escrito más de dos caracteres"
+
+    )
+    console.assert(
+        validarRegalo("Deseo un buen café para tomar por las mañanas") === "",
+        "La prueba de validarRegalo no probó que se haya escrito bien el regalo"
+    )
 }
 
 
