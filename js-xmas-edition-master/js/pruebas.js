@@ -45,7 +45,7 @@ function probarValidarProvincia() {
         || validarProvincia("Sgo. del Ester") === ""
         || validarProvincia("Tierra del Fuego") === ""
         || validarProvincia("Tucuman") === "",
-        "validarProvincia no está tomando los valores de las provincias"
+        "La prueba de validarProvincia no está tomando los valores de las provincias"
     )
 }
 
