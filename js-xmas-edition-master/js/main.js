@@ -7,7 +7,7 @@ let regalo = $form["descripcion-regalo"].value
 
 function validarRegalo(regalo) {
     if (regalo.length === 0) {
-        return "Este campo debe tener al menos 2 caracter"
+        return "Este campo debe tener al menos 2 caracteres"
     }
     else if (regalo.length <= 2) {
         return "Este campo debe contener al menos más de 2 caracteres"
