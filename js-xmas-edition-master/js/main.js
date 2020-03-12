@@ -8,7 +8,7 @@ function juntarProvincias(arrayInicial, arrayFinal, arrayLength) {
 function tomarOpciones() {
     provinciasEnForm = $form.ciudad.options
     arrayDeProvincias = []
-    lengthProvincias = provinciasEnForm.length - 1
+    lengthProvincias = provinciasEnForm.length
     arrayDeProvincias = juntarProvincias(provinciasEnForm, arrayDeProvincias, lengthProvincias)
     return arrayDeProvincias
 }
