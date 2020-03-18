@@ -1,33 +1,13 @@
-function juntarProvincias(arrayInicial, arrayFinal, arrayLength) {
-    for (let i = 1; i < arrayLength; i++) {
-        arrayFinal.push(arrayInicial[i].value)
-    }
-    return arrayFinal
+function tomarValoresDeInputs() {
+    let $form = obtenerForm()
+    let provincia = $form.ciudad.value
+    let regalo = document.querySelector("#descripcion-regalo").value
+    let inputs = [provincia, regalo]
+    return inputs
 }
-
-function tomarOpciones() {
-    provinciasEnForm = $form.ciudad.options
-    arrayDeProvincias = []
-    lengthProvincias = provinciasEnForm.length
-    arrayDeProvincias = juntarProvincias(provinciasEnForm, arrayDeProvincias, lengthProvincias)
-    return arrayDeProvincias
-}
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-$form = document.querySelector("#carta-a-santa")
-let provincia = $form.ciudad.value
-let regalo = $form["descripcion-regalo"].value
-
 
 function validarRegalo(regalo) {
-    if (regalo.length <= 2) {
+    if (regalo.length < 2) {
         return "Este campo debe contener al menos más de 2 caracteres"
     }
     else if (regalo.length > 250) {
@@ -38,8 +18,17 @@ function validarRegalo(regalo) {
 
 
 function validarProvincia(provincia) {
-    arrayDeProvincias = tomarOpciones()
+    let arrayDeProvincias = obtenerArrayProvincias()
     if (arrayDeProvincias.includes(provincia)) { return "" }
     else { return 'La provincia seleccionada no es perteneciente a ningún valor' }
 }
 
+
+$botonSubmit = document.querySelector("#enviar-carta")
+$botonSubmit.onclick = function () {
+    valores = tomarValoresDeInputs()
+    validarRegalo(valores[1])
+    validarProvincia(valores[0])
+
+    return false
+}
