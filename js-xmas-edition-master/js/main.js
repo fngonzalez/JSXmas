@@ -33,8 +33,6 @@ function validarNombre(nombre) {
     return ""
 }
 
-
-
 $botonSubmit = document.querySelector("#enviar-carta")
 $botonSubmit.onclick = function () {
     valores = tomarValoresDeInputs()
