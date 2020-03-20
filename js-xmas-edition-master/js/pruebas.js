@@ -7,12 +7,12 @@ function convertirNodeListAArray(nodeList) {
     return arrayFinal
 }
 
-function obtenerForm() {
+function obtenerFormulario() {
     return document.querySelector("#carta-a-santa")
 }
 
 function obtenerArrayProvincias() {
-    let $form = obtenerForm()
+    let $form = obtenerFormulario()
     let provinciasEnForm = $form.ciudad.options
     let arrayDeProvincias = convertirNodeListAArray(provinciasEnForm)
     return arrayDeProvincias
