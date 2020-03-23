@@ -44,8 +44,8 @@ function probarProvinciaConSeleccionInvalida() {
 tomarValoresDeInputs()
 
 function probarValidarProvincia() {
-    probarProvinciaConSeleccionValida()
     probarProvinciaConSeleccionInvalida()
+    probarProvinciaConSeleccionValida()
 }
 probarValidarProvincia()
 
@@ -66,7 +66,7 @@ function probarValidarRegalo() {
     pruebaValidacion(validarRegalo, mensaje3, retorna3, error3)
 
 }
-probarValidarRegalo()
+//probarValidarRegalo()
 
 function probarValidarNombre() {
     let mensaje = ['', 'Ezequiel', 'Este   texto   tiene  mas   de    50    caracteres ']
