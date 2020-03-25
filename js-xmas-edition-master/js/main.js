@@ -8,7 +8,7 @@ function tomarValoresDeInputs() {
 }
 
 function obtenerDirecciones() {
-    //no se muy bien como llamar a esta funcion, entiendo que seria una especie de "link"
+    //no se muy bien como llamar a esta funcion, entiendo que serian una especie de "links"
     let $form = obtenerFormulario()
     let direccionNombre = $form.nombre
     let direccionProvincia = $form.ciudad
@@ -24,11 +24,19 @@ let mostrarNormal = function (formulario) {
     formulario.className = ''
 }
 
-let returnValidarNombre = ["Este campo debe contener al menos 1 caracter", '', "Este campo debe tener menos de 50 caracteres"]
-
+let returnValidarNombre = ["Este campo debe contener al menos 1 caracter, y todos deben ser alfabeticos", '', "Este campo debe tener menos de 50 caracteres"]
 let returnValidarProvincia = ['', 'La provincia seleccionada no es perteneciente a ningún valor']
+let returnValidarRegalo = ["Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos", '', "Este campo debe tener menos de 250 caracteres"]
 
-let returnValidarRegalo = ["Este campo debe contener al menos más de 2 caracteres", '', "Este campo debe tener menos de 250 caracteres"]
+
+function esAlfabetico(string) {
+    return /^[A-Z]+$/i.test(string)
+}
+
+
+function esAlfanumerico(string) {
+    return /^[A-Z0-9,\. ]+$/i.test(string)
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,8 +52,12 @@ function validarNombre(nombre) {
         return returnValidarNombre[0]
     }
     else {
-        mostrarNormal(formularioNombre[0])
-        return returnValidarNombre[1]
+        if (esAlfabetico(nombre)) {
+            mostrarNormal(formularioNombre[0])
+            return returnValidarNombre[1]
+        }
+        mostrarError(formularioNombre[0])
+        return returnValidarNombre[0]
     }
 }
 
@@ -74,9 +86,17 @@ function validarRegalo(regalo) {
         mostrarError(formularioRegalo[2])
         return returnValidarRegalo[0]
     }
-    mostrarNormal(formularioRegalo[2])
-    return returnValidarRegalo[1]
+    else {
+        if (!esAlfanumerico(regalo)) {
+            mostrarError(formularioRegalo[2])
+            return returnValidarRegalo[0]
+        }
+        mostrarNormal(formularioRegalo[2])
+        return returnValidarRegalo[1]
+
+    }
 }
+
 
 
 $botonSubmit = document.querySelector("#enviar-carta")
