@@ -38,6 +38,8 @@ function probarProvinciaConSeleccionInvalida() {
 
     pruebaValidacion(validarProvincia, provinciaInvalida, returnValidarProvincia, mensajeDeError)
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,20 +53,14 @@ probarValidarProvincia()
 
 
 function probarValidarRegalo() {
-    let mensaje1 = "Este es un texto en el que necesariamente tienen que existir 250 caracteres. Esto es para conocer si es que el contador de letras de mi programa (el cual es la septima tarea del curso de programación para principiantes) está funcionando de una manera adecuada"
-    let mensaje2 = ""
-    let mensaje3 = "Deseo un buen café por las mañanas"
-    let retorna1 = "Este campo debe tener menos de 250 caracteres"
-    let retorna2 = "Este campo debe contener al menos más de 2 caracteres"
-    let retorna3 = ""
-    let error1 = "La prueba de validarRegalo, no validó que haya menos de 250 caracteres"
-    let error2 = "La prueba de validarRegalo no probó que se hayan escrito más de dos caracteres"
-    let error3 = "La prueba de validarRegalo no probó que se haya escrito bien el regalo"
-
-    pruebaValidacion(validarRegalo, mensaje1, retorna1, error1)
-    pruebaValidacion(validarRegalo, mensaje2, retorna2, error2)
-    pruebaValidacion(validarRegalo, mensaje3, retorna3, error3)
-
+    let mensaje = ["Este es un texto en el que necesariamente tienen que existir 250 caracteres. Esto es para conocer si es que el contador de letras de mi programa (el cual es la septima tarea del curso de programación para principiantes) está funcionando de una manera adecuada", '', '.,,.,;', "Chocolate en rama"]
+    let retorna = ["Este campo debe tener menos de 250 caracteres", "Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos", ""]
+    let error = ["La prueba de validarRegalo, no validó que haya menos de 250 caracteres", "La prueba de validarRegalo no probó que se hayan escrito más de dos caracteres", "La prueba de validarRegalo no probó que se haya escrito bien el regalo"]
+    
+    pruebaValidacion(validarRegalo, mensaje[0], retorna[0], error[0])
+    pruebaValidacion(validarRegalo, mensaje[1], retorna[1], error[1])
+    pruebaValidacion(validarRegalo, mensaje[2], retorna[1], error[1])
+    pruebaValidacion(validarRegalo, mensaje[3], retorna[2], error[2])
 }
 //probarValidarRegalo()
 
