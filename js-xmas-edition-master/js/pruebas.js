@@ -53,26 +53,53 @@ probarValidarProvincia()
 
 
 function probarValidarRegalo() {
-    let mensaje = ["Este es un texto en el que necesariamente tienen que existir 250 caracteres. Esto es para conocer si es que el contador de letras de mi programa (el cual es la septima tarea del curso de programación para principiantes) está funcionando de una manera adecuada", '', '.,,.,;', "Chocolate en rama"]
-    let retorna = ["Este campo debe tener menos de 250 caracteres", "Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos", ""]
-    let error = ["La prueba de validarRegalo, no validó que haya menos de 250 caracteres", "La prueba de validarRegalo no probó que se hayan escrito más de dos caracteres", "La prueba de validarRegalo no probó que se haya escrito bien el regalo"]
-    
-    pruebaValidacion(validarRegalo, mensaje[0], retorna[0], error[0])
-    pruebaValidacion(validarRegalo, mensaje[1], retorna[1], error[1])
-    pruebaValidacion(validarRegalo, mensaje[2], retorna[1], error[1])
-    pruebaValidacion(validarRegalo, mensaje[3], retorna[2], error[2])
+    let mensaje = {
+        textoLargo: "Este es un texto en el que necesariamente tienen que existir 250 caracteres. Esto es para conocer si es que el contador de letras de mi programa (el cual es la septima tarea del curso de programación para principiantes) está funcionando de una manera adecuada",
+        textoCorto: '',
+        textoSignos: '.,,.,;',
+        textoOk: "Chocolate en rama"
+    }
+    let retorna = {
+        textoLargo: "Este campo debe tener menos de 250 caracteres",
+        textoCorto: "Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos",
+        textoOk: ""
+    }
+    let error = {
+        textoLargo: "La prueba de validarRegalo, no validó que haya menos de 250 caracteres",
+        textoCorto: "La prueba de validarRegalo no probó que se hayan escrito más de dos caracteres",
+        textoOk: "La prueba de validarRegalo no probó que se haya escrito bien el regalo"
+    }
+
+    pruebaValidacion(validarRegalo, mensaje.textoLargo, retorna.textoLargo, error.textoLargo)
+    pruebaValidacion(validarRegalo, mensaje.textoCorto, retorna.textoCorto, error.textoCorto)
+    pruebaValidacion(validarRegalo, mensaje.textoSignos, retorna.textoCorto, error.textoCorto)
+    pruebaValidacion(validarRegalo, mensaje.textoOk, retorna.textoOk, error.textoOk)
 }
 probarValidarRegalo()
 
 function probarValidarNombre() {
-    let mensaje = ['','123', 'Ezequiel', 'Este   texto   tiene  mas   de    50    caracteres ']
-    let retorna = ['Este campo debe contener al menos 1 caracter, y todos deben ser alfabeticos', '', 'Este campo debe tener menos de 50 caracteres']
-    let error = ["La prueba de validarNombre no probó que se hayan escrito más de un caracter", "La prueba de validarNombre no probó que se haya escrito bien el nombre", "La prueba de validarNombre no validó que haya menos de 50 caracteres"]
+    let mensaje = {
+        textoCorto: '',
+        textoErroneo: '123',
+        textoOk: 'Ezequiel',
+        textoLargo: 'Este   texto   tiene  mas   de    50    caracteres '
+    }
+    let retorna = {
+        textoCorto: 'Este campo debe contener al menos 1 caracter, y todos deben ser alfabeticos',
+        textoOk: '',
+        textoLargo: 'Este campo debe tener menos de 50 caracteres'
+    }
+    let error = {
+        textoCorto: "La prueba de validarNombre no probó que se hayan escrito más de un caracter",
+        textoOk: "La prueba de validarNombre no probó que se haya escrito bien el nombre",
+        textoLargo: "La prueba de validarNombre no validó que haya menos de 50 caracteres"
+    }
 
-    pruebaValidacion(validarNombre, mensaje[0], retorna[0], error[0])
-    pruebaValidacion(validarNombre, mensaje[1], retorna[0], error[0])
-    pruebaValidacion(validarNombre, mensaje[3], retorna[2], error[2])
-    pruebaValidacion(validarNombre, mensaje[2], retorna[1], error[1])
+    pruebaValidacion(validarNombre, mensaje.textoCorto, retorna.textoCorto, error.textoCorto)
+    pruebaValidacion(validarNombre, mensaje.textoErroneo, retorna.textoCorto, error.textoCorto)
+    pruebaValidacion(validarNombre, mensaje.textoLargo, retorna.textoLargo, error.textoLargo)
+    pruebaValidacion(validarNombre, mensaje.textoOk, retorna.textoOk, error.textoOk)
+    
 
 }
 
