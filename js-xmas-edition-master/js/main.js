@@ -1,3 +1,38 @@
+function manejarErrores() {
+    let tomarValores = tomarValoresDeInputs()
+    let nombre = tomarValores[2]
+    let provincia = tomarValores[0]
+    let regalo = tomarValores[1]
+    let validacionNombre = validarNombre(nombre)
+    let ValidacionProvincia = validarProvincia(provincia)
+    let validacionRegalo = validarRegalo(regalo)
+    let formularios = obtenerFormulario()
+
+
+    if (validacionNombre) {
+        mostrarError(formularios[0])
+    } if (ValidacionProvincia) {
+        mostrarError(formularios[1])
+    } if (validacionRegalo) {
+        mostrarError(formularios[2])
+    }
+}
+
+$botonSubmit = document.querySelector("#enviar-carta")
+$botonSubmit.onclick = function () {
+    //     valores = tomarValoresDeInputs()
+    //     validarProvincia(valores[0])
+    //     validarRegalo(valores[1])
+    //     validarNombre(valores[2])
+    manejarErrores()
+    return false
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function tomarValoresDeInputs() {
     let direcciones = obtenerDirecciones()
     let nombre = direcciones[0].value
@@ -6,6 +41,7 @@ function tomarValoresDeInputs() {
     let inputs = [provincia, regalo, nombre]
     return inputs
 }
+
 
 function obtenerDirecciones() {
     //no se muy bien como llamar a esta funcion, entiendo que serian una especie de "links"
@@ -17,6 +53,57 @@ function obtenerDirecciones() {
     return direcciones
 }
 
+function validarNombre(nombre) {
+    let formularioNombre = obtenerFormulario()
+    if (nombre.length > 50) {
+        return returnValidarNombre.demasiados
+    }
+    else if (nombre.length < 1) {
+        return returnValidarNombre.vacio
+    }
+    else {
+        if (esAlfabetico(nombre)) {
+            mostrarNormal(formularioNombre[0])
+            return returnValidarNombre.bien
+        }
+        mostrarError(formularioNombre[0])
+        return returnValidarNombre.vacio
+    }
+}
+
+function validarProvincia(provincia) {
+    let formularioProvincia = obtenerFormulario()
+    let arrayDeProvincias = obtenerArrayProvincias()
+
+    if (arrayDeProvincias.includes(provincia)) {
+        mostrarNormal(formularioProvincia[1])
+        return returnValidarProvincia.bien
+    }
+    else {
+        mostrarError(formularioProvincia[1])
+        return returnValidarProvincia.mal
+    }
+}
+
+function validarRegalo(regalo) {
+    let formularioRegalo = obtenerDirecciones()
+
+    if (regalo.length > 250) {
+        return returnValidarRegalo.demasiados
+    }
+    else if (regalo.length < 2) {
+        return returnValidarRegalo.vacio
+    }
+    else {
+        if (!esAlfanumerico(regalo)) {
+            return returnValidarRegalo.vacio
+        }
+        mostrarNormal(formularioRegalo[2])
+        return returnValidarRegalo.bien
+
+    }
+}
+
 let mostrarError = function (formulario) {
     formulario.className = 'error'
 }
@@ -24,9 +111,20 @@ let mostrarNormal = function (formulario) {
     formulario.className = ''
 }
 
-let returnValidarNombre = ["Este campo debe contener al menos 1 caracter, y todos deben ser alfabeticos", '', "Este campo debe tener menos de 50 caracteres"]
-let returnValidarProvincia = ['', 'La provincia seleccionada no es perteneciente a ningún valor']
-let returnValidarRegalo = ["Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos", '', "Este campo debe tener menos de 250 caracteres"]
+let returnValidarNombre = {
+    vacio: "Este campo debe contener al menos 1 caracter, y todos deben ser alfabeticos",
+    bien: '',
+    demasiados: "Este campo debe tener menos de 50 caracteres"
+}
+let returnValidarProvincia = {
+    bien: '',
+    mal: 'La provincia seleccionada no es perteneciente a ningún valor'
+}
+let returnValidarRegalo = {
+    vacio: "Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos",
+    bien: '',
+    demasiados: "Este campo debe tener menos de 250 caracteres"
+}
 
 
 function esAlfabetico(string) {
@@ -38,72 +136,3 @@ function esAlfanumerico(string) {
     return /^[A-Z0-9,\. ]+$/i.test(string)
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-function validarNombre(nombre) {
-    let formularioNombre = obtenerFormulario()
-    if (nombre.length > 50) {
-        mostrarError(formularioNombre[0])
-        return returnValidarNombre[2]
-    }
-    else if (nombre.length < 1) {
-        mostrarError(formularioNombre[0])
-        return returnValidarNombre[0]
-    }
-    else {
-        if (esAlfabetico(nombre)) {
-            mostrarNormal(formularioNombre[0])
-            return returnValidarNombre[1]
-        }
-        mostrarError(formularioNombre[0])
-        return returnValidarNombre[0]
-    }
-}
-
-function validarProvincia(provincia) {
-    let formularioProvincia = obtenerFormulario()
-    let arrayDeProvincias = obtenerArrayProvincias()
-
-    if (arrayDeProvincias.includes(provincia)) {
-        mostrarNormal(formularioProvincia[1])
-        return returnValidarProvincia[0]
-    }
-    else {
-        mostrarError(formularioProvincia[1])
-        return returnValidarProvincia[1]
-    }
-}
-
-function validarRegalo(regalo) {
-    let formularioRegalo = obtenerDirecciones()
-
-    if (regalo.length > 250) {
-        mostrarError(formularioRegalo[2])
-        return returnValidarRegalo[2]
-    }
-    else if (regalo.length < 2) {
-        mostrarError(formularioRegalo[2])
-        return returnValidarRegalo[0]
-    }
-    else {
-        if (!esAlfanumerico(regalo)) {
-            mostrarError(formularioRegalo[2])
-            return returnValidarRegalo[0]
-        }
-        mostrarNormal(formularioRegalo[2])
-        return returnValidarRegalo[1]
-
-    }
-}
-
-
-
-$botonSubmit = document.querySelector("#enviar-carta")
-$botonSubmit.onclick = function () {
-    valores = tomarValoresDeInputs()
-    validarProvincia(valores[0])
-    validarRegalo(valores[1])
-    validarNombre(valores[2])
-    return false
-}
