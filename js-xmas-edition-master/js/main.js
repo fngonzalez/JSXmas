@@ -3,19 +3,19 @@ function manejarErrores() {
     let nombre = tomarValores[2]
     let provincia = tomarValores[0]
     let regalo = tomarValores[1]
-    let validacionNombre = validarNombre(nombre)
-    let ValidacionProvincia = validarProvincia(provincia)
-    let validacionRegalo = validarRegalo(regalo)
+    // let validacionNombre = 
+    // let ValidacionProvincia = 
+    // let validacionRegalo = validarRegalo(regalo)
     let formularios = obtenerDirecciones()
     let errores=0
 
-    if (validacionNombre) {
+    if (validarNombre(nombre)) {
         mostrarError(formularios[0])
         errores++
-    } if (ValidacionProvincia) {
+    } if (validarProvincia(provincia)) {
         mostrarError(formularios[1])
         errores++
-    } if (validacionRegalo) {
+    } if (validarRegalo(regalo)) {
         mostrarError(formularios[2])
         errores++
     }
@@ -24,13 +24,13 @@ function manejarErrores() {
 
 $botonSubmit = document.querySelector("#enviar-carta")
 $botonSubmit.onclick = function () {
-    //     valores = tomarValoresDeInputs()
-    //     validarProvincia(valores[0])
-    //     validarRegalo(valores[1])
-    //     validarNombre(valores[2])
     manejarErrores()
     return false
 }
+
+
+
+
 
 
 
