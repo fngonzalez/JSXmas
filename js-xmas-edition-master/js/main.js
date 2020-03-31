@@ -6,16 +6,20 @@ function manejarErrores() {
     let validacionNombre = validarNombre(nombre)
     let ValidacionProvincia = validarProvincia(provincia)
     let validacionRegalo = validarRegalo(regalo)
-    let formularios = obtenerFormulario()
-
+    let formularios = obtenerDirecciones()
+    let errores=0
 
     if (validacionNombre) {
         mostrarError(formularios[0])
+        errores++
     } if (ValidacionProvincia) {
         mostrarError(formularios[1])
+        errores++
     } if (validacionRegalo) {
         mostrarError(formularios[2])
+        errores++
     }
+    console.log(errores)
 }
 
 $botonSubmit = document.querySelector("#enviar-carta")
