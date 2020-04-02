@@ -1,25 +1,23 @@
 function manejarErrores() {
     let tomarValores = tomarValoresDeInputs()
-    let nombre = tomarValores[2]
-    let provincia = tomarValores[0]
-    let regalo = tomarValores[1]
-    // let validacionNombre = 
-    // let ValidacionProvincia = 
-    // let validacionRegalo = validarRegalo(regalo)
-    let formularios = obtenerDirecciones()
-    let errores=0
-
-    if (validarNombre(nombre)) {
-        mostrarError(formularios[0])
-        errores++
-    } if (validarProvincia(provincia)) {
-        mostrarError(formularios[1])
-        errores++
-    } if (validarRegalo(regalo)) {
-        mostrarError(formularios[2])
-        errores++
+    let valorNombre = tomarValores[2]
+    let valorProvincia = tomarValores[0]
+    let valorRegalo = tomarValores[1]
+    let errores={
+    
+        nombre: validarNombre(valorNombre),
+        ciudad:validarProvincia(valorProvincia),
+        'descripcion-regalo': validarRegalo(valorRegalo)
     }
-    console.log(errores)
+    
+    keys=Object.keys(errores)
+    
+    keys.forEach(function(key) {
+        if (errores[key]){
+        return mostrarError(document.formulario[key])
+        }
+        return mostrarNormal(document.formulario[key])
+    });
 }
 
 $botonSubmit = document.querySelector("#enviar-carta")
@@ -67,24 +65,19 @@ function validarNombre(nombre) {
     }
     else {
         if (esAlfabetico(nombre)) {
-            mostrarNormal(formularioNombre[0])
             return returnValidarNombre.bien
         }
-        mostrarError(formularioNombre[0])
         return returnValidarNombre.vacio
     }
 }
 
 function validarProvincia(provincia) {
-    let formularioProvincia = obtenerFormulario()
     let arrayDeProvincias = obtenerArrayProvincias()
 
     if (arrayDeProvincias.includes(provincia)) {
-        mostrarNormal(formularioProvincia[1])
         return returnValidarProvincia.bien
     }
     else {
-        mostrarError(formularioProvincia[1])
         return returnValidarProvincia.mal
     }
 }
@@ -102,7 +95,6 @@ function validarRegalo(regalo) {
         if (!esAlfanumerico(regalo)) {
             return returnValidarRegalo.vacio
         }
-        mostrarNormal(formularioRegalo[2])
         return returnValidarRegalo.bien
 
     }
@@ -139,4 +131,5 @@ function esAlfabetico(string) {
 function esAlfanumerico(string) {
     return /^[A-Z0-9,\. ]+$/i.test(string)
 }
+
 
