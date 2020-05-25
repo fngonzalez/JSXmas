@@ -24,24 +24,17 @@ $botonSubmit = document.querySelector("#enviar-carta")
 $botonSubmit.onclick = function () {
     manejarErrores()
     return false
+
 }
-
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function tomarValoresDeInputs() {
-    let direcciones = obtenerDirecciones()
-    let nombre = direcciones[0].value
-    let provincia = direcciones[1].value
-    let regalo = direcciones[2].value
-    let inputs = [provincia, regalo, nombre]
-    return inputs
+    let direcciones = obtenerDirecciones();
+    let nombre = direcciones[0].value;
+    let provincia = direcciones[1].value;
+    let regalo = direcciones[2].value;
+    let inputs = [provincia, regalo, nombre];
+    return inputs;
 }
 
 
@@ -132,4 +125,31 @@ function esAlfanumerico(string) {
     return /^[A-Z0-9,\. ]+$/i.test(string)
 }
 
+function mostrarErrorDeValidacion(error) {
+    let $errores = document.querySelector('#errores');
+    let $lugarParaInsertarElError = document.createElement('li');
+    $lugarParaInsertarElError.id = "errores-para-mostrar";
+    $lugarParaInsertarElError.innerText = error;
+    $errores.appendChild($lugarParaInsertarElError);
+}
 
+function formIncluyeError(error) {
+    let erroresEnUnaLista = erroresQueSeMuestran();
+    return erroresEnUnaLista.includes(error);
+}
+
+function erroresQueSeMuestran() {
+    let $erroresMostrados = document.querySelectorAll("#errores-para-mostrar");
+    let erroresEnUnaLista = convertirTextoEnNodeListAArray($erroresMostrados);
+    return erroresEnUnaLista;
+}
+
+function comprobarSiExiste(error) {
+    let errorEnPagina = document.querySelector("errores-para-mostrar");
+    return (error == errorEnPagina);
+}
+
+function limpiarFormulario () {
+    let nodoErrorEnFormulario= document.getElementById("errores")
+    return nodoErrorEnFormulario.innerText=""
+}

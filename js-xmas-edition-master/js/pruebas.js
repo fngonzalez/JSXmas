@@ -7,6 +7,15 @@ function convertirNodeListAArray(nodeList) {
     return arrayFinal
 }
 
+
+function convertirTextoEnNodeListAArray(nodeList) {
+    let arrayFinal = []
+    for (let i = 0; i < nodeList.length; i++) {
+        arrayFinal.push(nodeList[i].innerText)
+    }
+    return arrayFinal
+}
+
 function obtenerFormulario() {
     return document.querySelector("#carta-a-santa")
 }
@@ -35,11 +44,8 @@ function probarProvinciaConSeleccionInvalida() {
     let provinciaInvalida = 'Oklahoma'
     let returnValidarProvincia = 'La provincia seleccionada no es perteneciente a ningún valor'
     let mensajeDeError = "La prov no coincide con la validación"
-
     pruebaValidacion(validarProvincia, provinciaInvalida, returnValidarProvincia, mensajeDeError)
 }
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -100,7 +106,26 @@ function probarValidarNombre() {
     pruebaValidacion(validarNombre, mensaje.textoLargo, retorna.textoLargo, error.textoLargo)
     pruebaValidacion(validarNombre, mensaje.textoOk, retorna.textoOk, error.textoOk)
     
+function probarEsAlfabetico(){
+    let textoAlfabetico="estamos en abril"
+    let textoAlfanumerico="es el mes 4"
+    let validacionAlfabeticaFallida="La funcion 'esAlfabetico' no cersioró que el valor sea alfabético."
+    let validacionAlfanumericaFallida="La prueba 'esAlfabetico' no está cersiorandose de que el valor sea alfabetico"
 
+    
+    pruebaValidacion(esAlfabetico,textoAlfabetico,true,validacionAlfabeticaFallida)
+    pruebaValidacion(esAlfabetico,textoAlfanumerico,false,validacionAlfanumericaFallida)
 }
+probarEsAlfabetico()
 
-probarValidarNombre()
+
+function probarEsAlfanumerico(){
+    let  textoAlfanumerico="es el mes 4"
+    let textoSignosInvalidos="%¿"
+    let validacionAlfanumericaFallida="La funcion 'esAlfanumerico' no cersioró que el valor sea alfanumerico."
+    let validacionSignosInvalidosfallida="La prueba 'esAlfanumerico' no está cersiorandose de que el valor sea alfanumerico"
+    
+    pruebaValidacion(esAlfanumerico,textoAlfanumerico,true,validacionAlfanumericaFallida)
+    pruebaValidacion(esAlfanumerico,textoSignosInvalidos,false,validacionSignosInvalidosfallida)
+}
+probarEsAlfanumerico()
