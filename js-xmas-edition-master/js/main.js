@@ -32,6 +32,7 @@ function manejarErrores() {
     if (!i){
         document.getElementById('exito').className=''
         document.formulario.className='oculto'
+        setTimeout(function(){ window.location.href = 'file:///C:/Users/Rodolfo/Documents/GitHub/JSXmas/js-xmas-edition-master/wishlist.html'; }, 5000);
     }
 
 }
