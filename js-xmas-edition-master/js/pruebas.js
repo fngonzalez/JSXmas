@@ -49,8 +49,6 @@ function probarProvinciaConSeleccionInvalida() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-tomarValoresDeInputs()
-
 function probarValidarProvincia() {
     probarProvinciaConSeleccionInvalida()
     probarProvinciaConSeleccionValida()
@@ -66,8 +64,8 @@ function probarValidarRegalo() {
         textoOk: "Chocolate en rama"
     }
     let retorna = {
-        textoLargo: "Este campo debe tener menos de 250 caracteres",
-        textoCorto: "Este campo debe contener al menos más de 2 caracteres, y todos deben ser alfanumericos",
+        textoLargo: "La descripción de tu regalo debe tener menos de 250 caracteres",
+        textoCorto: "La descripción de tu regalo debe tener al menos de 2 caracteres, y todos deben ser alfanumericos",
         textoOk: ""
     }
     let error = {
@@ -88,12 +86,12 @@ function probarValidarNombre() {
         textoCorto: '',
         textoErroneo: '123',
         textoOk: 'Ezequiel',
-        textoLargo: 'Este   texto   tiene  mas   de    50    caracteres '
+        textoLargo: 'Este es un texto que contiene mas de cincuenta caracteres'
     }
     let retorna = {
-        textoCorto: 'Este campo debe contener al menos 1 caracter, y todos deben ser alfabeticos',
+        textoCorto: 'Tu nombre debe tener al menos 1 caracter, y todos deben ser alfabeticos',
         textoOk: '',
-        textoLargo: 'Este campo debe tener menos de 50 caracteres'
+        textoLargo: 'Tu nombre no puede tener mas de 50 caracteres'
     }
     let error = {
         textoCorto: "La prueba de validarNombre no probó que se hayan escrito más de un caracter",
@@ -106,6 +104,10 @@ function probarValidarNombre() {
     pruebaValidacion(validarNombre, mensaje.textoLargo, retorna.textoLargo, error.textoLargo)
     pruebaValidacion(validarNombre, mensaje.textoOk, retorna.textoOk, error.textoOk)
     
+}
+
+probarValidarNombre()
+
 function probarEsAlfabetico(){
     let textoAlfabetico="estamos en abril"
     let textoAlfanumerico="es el mes 4"
