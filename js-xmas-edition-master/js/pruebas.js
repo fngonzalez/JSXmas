@@ -7,7 +7,6 @@ function convertirNodeListAArray(nodeList) {
     return arrayFinal
 }
 
-
 function convertirTextoEnNodeListAArray(nodeList) {
     let arrayFinal = []
     for (let i = 0; i < nodeList.length; i++) {

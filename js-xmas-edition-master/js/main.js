@@ -24,9 +24,16 @@ function manejarErrores() {
         }
         if (!error) {
             mostrarNormal(document.formulario[key]);
-            console.log(erroresQueSeMuestran());
+            // console.log(erroresQueSeMuestran());
         }
+    
     });
+
+    if (!i){
+        document.getElementById('exito').className=''
+        document.formulario.className='oculto'
+    }
+
 }
 
 $botonSubmit = document.querySelector("#enviar-carta")
